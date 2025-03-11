@@ -61,6 +61,14 @@ jobs:
           TAG=$(echo '${{ steps.meta.outputs.tags }}' | head -n 1)
           echo "DOCKER_TAG=${TAG##*:}" >> $GITHUB_ENV
 
+      - name: Make container public
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.request('PATCH /user/packages/container/${{ github.repository_owner }}/${{ github.event.repository.name }}/visibility', {
+              visibility: 'public'
+            });
+
   helm:
     needs: docker
     runs-on: ubuntu-latest
