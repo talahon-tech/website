@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: talahon/static-site
+  repository: registry.gitlab.com/talahon-tech/static-site
   tag: latest
   pullPolicy: IfNotPresent
 
