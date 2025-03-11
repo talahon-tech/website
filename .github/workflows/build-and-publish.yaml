@@ -10,8 +10,8 @@ on:
 
 env:
   GITLAB_REGISTRY: registry.gitlab.com
-  IMAGE_NAME: talahon-tech/static-site
-  HELM_CHART_NAME: talahon-static-site
+  IMAGE_NAME: talahon-tech/website
+  HELM_CHART_NAME: talahon-website
 
 permissions:
   contents: write
