@@ -47,8 +47,18 @@
         .company-name {
             font-size: 1.8rem;
             font-weight: 700;
-            background: linear-gradient(135deg, #00bcd4, #2196f3, #00bcd4);
-            background-size: 200% 100%;
+            background: linear-gradient(
+                135deg,
+                #FF0000,
+                #FF7F00,
+                #FFFF00,
+                #00FF00,
+                #0000FF,
+                #4B0082,
+                #8B00FF,
+                #FF0000
+            );
+            background-size: 800% 800%;
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -56,17 +66,17 @@
             letter-spacing: -0.5px;
             text-shadow: 2px 2px 4px rgba(0, 188, 212, 0.2);
             position: relative;
-            animation: shimmer 3s infinite linear,
-                       float 4s ease-in-out infinite,
-                       scale 2s ease-in-out infinite;
+            animation: rainbow-wheel 35s linear infinite,
+                       float 6s ease-in-out infinite,
+                       scale 4s ease-in-out infinite;
         }
 
-        @keyframes shimmer {
+        @keyframes rainbow-wheel {
             0% {
-                background-position: 0% 50%;
+                background-position: 0% 0%;
             }
             100% {
-                background-position: 200% 50%;
+                background-position: 800% 0%;
             }
         }
 
