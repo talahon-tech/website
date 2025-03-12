@@ -3,335 +3,345 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Talahon Tech</title>
+    <title>Talahon Tech - IT Development</title>
     <style>
-        :root {
-            --primary: #ff6b4a;
-            --primary-light: #ff8f75;
-            --primary-dark: #e55a3d;
-            --dark: #1a1f2e;
-            --text: #2d3748;
-            --bg: #f7fafc;
-            --card-bg: rgba(255, 255, 255, 0.8);
-            --max-width: 1200px;
-            --content-padding: clamp(1rem, 5vw, 3rem);
-        }
-        
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        * {
             margin: 0;
-            padding: var(--content-padding);
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: #fafafa;
             min-height: 100vh;
-            background: linear-gradient(135deg, var(--bg), #ffffff);
-            color: var(--text);
-            display: grid;
-            place-items: center;
-        }
-
-        .container {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            text-align: center;
-            padding: var(--content-padding);
-            background: var(--card-bg);
-            border-radius: 24px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 
-                0 10px 30px -5px rgba(0, 0, 0, 0.05),
-                0 20px 60px -10px rgba(0, 0, 0, 0.02),
-                0 0 0 1px rgba(255, 255, 255, 0.3);
-            width: min(90%, var(--max-width));
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            place-items: center;
-        }
-
-        .container:hover {
-            transform: translateY(-2px);
-            box-shadow: 
-                0 20px 40px -5px rgba(0, 0, 0, 0.1),
-                0 30px 70px -10px rgba(0, 0, 0, 0.04),
-                0 0 0 1px rgba(255, 255, 255, 0.5);
-        }
-
-        .container::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(
-                circle at top right,
-                rgba(255, 107, 74, 0.1),
-                transparent 70%
-            );
-            z-index: 0;
-        }
-
-        .header-section {
-            display: grid;
-            gap: 2rem;
-            justify-items: center;
+            display: flex;
+            justify-content: center;
             align-items: center;
-            position: relative;
-            z-index: 1;
-            width: 100%;
-            max-width: 640px;
+            padding: 20px;
         }
 
-        .logo-wrapper {
-            position: relative;
-            display: inline-block;
+        .business-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+            padding: 24px;
+            width: 100%;
+            max-width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
         }
 
         .logo {
-            width: 160px;
+            width: 80px;
             height: auto;
-            padding: 1.5rem;
-            background: var(--dark);
-            border-radius: 20px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            z-index: 1;
-            box-shadow: 
-                0 10px 20px -5px rgba(26, 31, 46, 0.2),
-                0 0 0 1px rgba(26, 31, 46, 0.1);
-        }
-
-        .logo-wrapper::before {
-            content: '';
-            position: absolute;
-            inset: -1px;
-            background: linear-gradient(
-                135deg,
-                var(--primary),
-                var(--primary-light)
-            );
-            border-radius: 21px;
-            z-index: 0;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            filter: blur(1px);
-        }
-
-        .logo-wrapper:hover::before {
-            opacity: 0.8;
+            transition: transform 0.2s ease;
         }
 
         .logo:hover {
-            transform: translateY(-8px) scale(1.02);
-        }
-
-        .content-section {
-            display: grid;
-            gap: 1.5rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        h1 {
-            color: var(--dark);
-            margin: 0;
-            font-size: clamp(2rem, 5vw, 2.75rem);
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            line-height: 1.2;
-            position: relative;
-            margin-bottom: 0.5rem;
+            transform: scale(1.02);
         }
 
         .company-name {
-            display: block;
-            font-size: clamp(2.5rem, 6vw, 3.5rem);
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            letter-spacing: 0.2em;
-            margin: 0.5rem 0;
-            text-shadow: 
-                0 1px 1px rgba(255, 107, 74, 0.1),
-                0 2px 4px rgba(255, 107, 74, 0.05);
-        }
-
-        h1 span {
-            display: inline-block;
-            color: var(--primary);
-            position: relative;
-        }
-
-        h1 span::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(
-                90deg,
-                var(--primary),
-                var(--primary-light)
-            );
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.3s ease;
-        }
-
-        h1:hover span::after {
-            transform: scaleX(1);
-            transform-origin: left;
-        }
-
-        p {
-            font-size: clamp(1.1rem, 2vw, 1.25rem);
-            line-height: 1.7;
-            color: var(--text);
-            max-width: 480px;
-            margin: 0 auto;
-            opacity: 0.85;
-        }
-
-        .acronym-section {
-            position: relative;
-            z-index: 1;
-            margin-top: 3rem;
-            width: 100%;
-            display: grid;
-            place-items: center;
-        }
-
-        .acronym-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: grid;
-            gap: 1rem;
-            width: 100%;
-            max-width: 640px;
-        }
-
-        .acronym-list li {
-            padding: 1rem 1.25rem;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 16px;
-            display: grid;
-            grid-template-columns: 60px 1fr;
-            align-items: center;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(5px);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .acronym-letter {
-            color: var(--primary);
-            font-weight: 800;
-            font-size: clamp(1.5rem, 2.5vw, 2rem);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #00bcd4;
             text-align: center;
-            background: rgba(255, 107, 74, 0.1);
-            border-radius: 12px;
-            padding: 0.5rem;
-            margin-right: 1rem;
-            aspect-ratio: 1;
+            letter-spacing: -0.5px;
+        }
+
+        .tagline {
+            font-size: 1rem;
+            color: #666;
+            text-align: center;
+            font-weight: 400;
+            margin-top: -16px;
+        }
+
+        .acronym-container {
+            width: 100%;
             display: grid;
-            place-items: center;
-            box-shadow: 
-                0 2px 4px rgba(255, 107, 74, 0.1),
-                0 0 0 1px rgba(255, 107, 74, 0.1);
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px 12px;
+            padding: 16px;
+            background: linear-gradient(to bottom right, #f8f9fa, #ffffff);
+            border-radius: 12px;
+            position: relative;
+            margin: 0 auto;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
         }
 
-        .acronym-text {
-            color: var(--text);
-            font-size: clamp(1.1rem, 1.5vw, 1.25rem);
+        .acronym-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            width: 32px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .letter-container {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 188, 212, 0.1);
+            position: relative;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 188, 212, 0.1);
+        }
+
+        .letter {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #00bcd4;
+            transition: all 0.3s ease;
+        }
+
+        .meaning {
+            color: #666;
+            font-size: 0.6rem;
             font-weight: 500;
+            writing-mode: vertical-rl;
+            transform: rotate(0deg);
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            line-height: 1.2;
+            letter-spacing: 0.8px;
+            margin-top: 4px;
+            height: 70px;
+            opacity: 0.8;
         }
 
-        /* Tablet and larger screens */
-        @media (min-width: 640px) {
-            .container {
-                padding: calc(var(--content-padding) * 1.5);
-                border-radius: 32px;
+        .acronym-item:hover {
+            transform: translateY(-2px);
+        }
+
+        .acronym-item:hover .letter-container {
+            background: #00bcd4;
+            box-shadow: 0 4px 8px rgba(0, 188, 212, 0.2);
+            border-color: #00bcd4;
+        }
+
+        .acronym-item:hover .letter {
+            color: white;
+        }
+
+        .acronym-item:hover .meaning {
+            color: #00bcd4;
+            opacity: 1;
+            font-weight: 600;
+        }
+
+        .services {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .service-tag {
+            color: #666;
+            padding: 4px 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid #eee;
+            border-radius: 16px;
+            transition: all 0.2s ease;
+        }
+
+        .service-tag:hover {
+            border-color: #00bcd4;
+            color: #00bcd4;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #666;
+            font-size: 0.85rem;
+            width: 100%;
+            padding: 6px 0;
+        }
+
+        .contact-item svg {
+            width: 16px;
+            height: 16px;
+            fill: #00bcd4;
+            opacity: 0.8;
+        }
+
+        @media (min-width: 481px) {
+            .business-card {
+                padding: 40px;
+                max-width: 560px;
+                gap: 32px;
             }
-            
+
             .logo {
-                width: 200px;
-                padding: 2rem;
-                border-radius: 24px;
+                width: 120px;
             }
 
-            .acronym-list li {
-                padding: 1rem 1.25rem;
-                grid-template-columns: 50px 1fr;
-            }
-        }
-
-        /* Desktop screens */
-        @media (min-width: 1024px) {
-            .container {
-                grid-template-columns: 1fr;
-                align-items: center;
-                gap: 4rem;
-                padding: calc(var(--content-padding) * 2);
-                max-width: 960px;
+            .company-name {
+                font-size: 2.2rem;
             }
 
-            .header-section {
-                text-align: center;
-                justify-items: center;
-                max-width: 800px;
+            .tagline {
+                font-size: 1.1rem;
+                margin-top: -24px;
             }
 
-            .content-section {
-                text-align: center;
+            .acronym-container {
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+                padding: 24px;
+                border-radius: 16px;
             }
 
-            p {
-                margin: 0 auto;
-                max-width: 600px;
+            .acronym-item {
+                width: 40px;
+                gap: 10px;
             }
 
-            .acronym-section {
-                margin-top: 3rem;
+            .letter-container {
+                width: 40px;
+                height: 40px;
+                border-radius: 10px;
             }
 
-            .acronym-list {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-                max-width: 900px;
+            .letter {
+                font-size: 1.2rem;
             }
 
-            .acronym-list li {
-                padding: 1.25rem 1.5rem;
+            .meaning {
+                font-size: 0.65rem;
+                height: 85px;
+                letter-spacing: 1px;
             }
 
-            .acronym-letter {
-                font-size: 2rem;
+            .services {
+                gap: 12px;
+            }
+
+            .service-tag {
+                padding: 6px 16px;
+                font-size: 0.9rem;
+            }
+
+            .contact-info {
+                gap: 12px;
+                max-width: 400px;
+            }
+
+            .contact-item {
+                gap: 12px;
+                font-size: 0.95rem;
+                padding: 8px 0;
+            }
+
+            .contact-item svg {
+                width: 18px;
+                height: 18px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header-section">
-            <div class="logo-wrapper">
-                <img src="images/talahon-tech.png" alt="Talahon Tech Logo" class="logo">
+    <div class="business-card">
+        <img src="images/talahon-tech.png" alt="Talahon Tech Logo" class="logo">
+        <h1 class="company-name">TALAHON TECH</h1>
+        <p class="tagline">Innovative IT Development Solutions</p>
+        
+        <div class="acronym-container">
+            <div class="acronym-item">
+                <div class="letter-container">
+                    <span class="letter">T</span>
+                </div>
+                <span class="meaning">Technology</span>
             </div>
-            <h1>Welcome to<br><span class="company-name">TALAHON</span> Tech</h1>
-            <p>Innovating the future through technology solutions.</p>
+            <div class="acronym-item">
+                <div class="letter-container">
+                    <span class="letter">A</span>
+                </div>
+                <span class="meaning">Automation</span>
+            </div>
+            <div class="acronym-item">
+                <div class="letter-container">
+                    <span class="letter">L</span>
+                </div>
+                <span class="meaning">Leadership</span>
+            </div>
+            <div class="acronym-item">
+                <div class="letter-container">
+                    <span class="letter">A</span>
+                </div>
+                <span class="meaning">Agility</span>
+            </div>
+            <div class="acronym-item">
+                <div class="letter-container">
+                    <span class="letter">H</span>
+                </div>
+                <span class="meaning">High Performance</span>
+            </div>
+            <div class="acronym-item">
+                <div class="letter-container">
+                    <span class="letter">O</span>
+                </div>
+                <span class="meaning">Optimization</span>
+            </div>
+            <div class="acronym-item">
+                <div class="letter-container">
+                    <span class="letter">N</span>
+                </div>
+                <span class="meaning">Next-Gen Solutions</span>
+            </div>
         </div>
-        <div class="acronym-section">
-            <ul class="acronym-list">
-                <li><div class="acronym-letter">T</div><span class="acronym-text">Technology</span></li>
-                <li><div class="acronym-letter">A</div><span class="acronym-text">Automation</span></li>
-                <li><div class="acronym-letter">L</div><span class="acronym-text">Leadership</span></li>
-                <li><div class="acronym-letter">A</div><span class="acronym-text">Agility</span></li>
-                <li><div class="acronym-letter">H</div><span class="acronym-text">High Performance</span></li>
-                <li><div class="acronym-letter">O</div><span class="acronym-text">Optimization</span></li>
-                <li><div class="acronym-letter">N</div><span class="acronym-text">Next-Gen Solutions</span></li>
-            </ul>
+
+        <div class="services">
+            <span class="service-tag">Web Development</span>
+            <span class="service-tag">Mobile Apps</span>
+            <span class="service-tag">Cloud Solutions</span>
+            <span class="service-tag">Custom Software</span>
+        </div>
+
+        <div class="contact-info">
+            <div class="contact-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                </svg>
+                <span>contact@talahon.tech</span>
+            </div>
+            <div class="contact-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+                <span>San Francisco, CA</span>
+            </div>
+            <div class="contact-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                </svg>
+                <span>+1 (555) 123-4567</span>
+            </div>
         </div>
     </div>
 </body>
-</html> 
+</html>
