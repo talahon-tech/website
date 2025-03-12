@@ -66,9 +66,7 @@
             letter-spacing: -0.5px;
             text-shadow: 2px 2px 4px rgba(0, 188, 212, 0.2);
             position: relative;
-            animation: rainbow-wheel 35s linear infinite,
-                       float 6s ease-in-out infinite,
-                       scale 4s ease-in-out infinite;
+            animation: rainbow-wheel 35s linear infinite;
         }
 
         @keyframes rainbow-wheel {
@@ -77,24 +75,6 @@
             }
             100% {
                 background-position: 800% 0%;
-            }
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-5px);
-            }
-        }
-
-        @keyframes scale {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.02);
             }
         }
 
