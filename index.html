@@ -179,25 +179,73 @@
         }
 
         .services {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 8px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            width: 100%;
+            padding: 0 8px;
         }
 
         .service-tag {
-            color: #666;
-            padding: 4px 12px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            border: 1px solid #eee;
+            background: white;
+            border: 1px solid rgba(0, 188, 212, 0.1);
             border-radius: 16px;
-            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: center;
+        }
+
+        .service-tag svg {
+            width: 24px;
+            height: 24px;
+            fill: #00bcd4;
+            opacity: 0.9;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-bottom: 8px;
+        }
+
+        .service-tag span {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #666;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            line-height: 1.2;
+        }
+
+        .service-tag::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0, 188, 212, 0.05), rgba(33, 150, 243, 0.05));
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .service-tag:hover {
-            border-color: #00bcd4;
+            border-color: rgba(0, 188, 212, 0.2);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 188, 212, 0.12);
+        }
+
+        .service-tag:hover::after {
+            opacity: 1;
+        }
+
+        .service-tag:hover svg {
+            transform: scale(1.1);
+        }
+
+        .service-tag:hover span {
             color: #00bcd4;
+            transform: translateY(2px);
         }
 
         .contact-info {
@@ -281,12 +329,23 @@
             }
 
             .services {
-                gap: 12px;
+                grid-template-columns: repeat(4, 1fr);
+                padding: 0;
+                gap: 24px;
             }
 
             .service-tag {
-                padding: 6px 16px;
-                font-size: 0.9rem;
+                padding: 24px 16px;
+            }
+
+            .service-tag svg {
+                width: 32px;
+                height: 32px;
+                margin-bottom: 12px;
+            }
+
+            .service-tag span {
+                font-size: 0.95rem;
             }
 
             .contact-info {
@@ -313,6 +372,15 @@
         <h1 class="company-name">TALAHON TECH</h1>
         <p class="tagline">Innovative IT Development Solutions</p>
         
+        <div class="contact-info">
+            <div class="contact-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                </svg>
+                <span>hello@talahon.tech</span>
+            </div>
+        </div>
+
         <div class="acronym-container">
             <div class="acronym-item">
                 <div class="letter-container">
@@ -359,20 +427,44 @@
         </div>
 
         <div class="services">
-            <span class="service-tag">Web Development</span>
-            <span class="service-tag">Mobile Apps</span>
-            <span class="service-tag">Cloud Solutions</span>
-            <span class="service-tag">Custom Software</span>
-        </div>
-
-        <div class="contact-info">
-            <div class="contact-item">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+            <div class="service-tag">
+                <svg viewBox="0 0 24 24">
+                    <path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14zm-4.2-5.78v1.75l2.81-2.62c.21-.2.21-.53 0-.73L12.8 9v1.7c-3.11.43-4.35 2.56-4.8 4.7 1.11-1.5 2.58-2.18 4.8-2.18z"/>
                 </svg>
-                <span>hello@talahon.tech</span>
+                <span>Mobile App Development</span>
+            </div>
+            <div class="service-tag">
+                <svg viewBox="0 0 24 24">
+                    <path d="M20 3H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h3l-1 1v2h12v-2l-1-1h3c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 13H4V5h16v11z M12 8.5a3 3 0 100 6 3 3 0 000-6z"/>
+                </svg>
+                <span>IT Consulting</span>
+            </div>
+            <div class="service-tag">
+                <svg viewBox="0 0 24 24">
+                    <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/>
+                </svg>
+                <span>Cloud Infrastructure</span>
+            </div>
+            <div class="service-tag">
+                <svg viewBox="0 0 24 24">
+                    <path d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/>
+                </svg>
+                <span>On-Premise Solutions</span>
+            </div>
+            <div class="service-tag">
+                <svg viewBox="0 0 24 24">
+                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-7-2h2V7h-4v2h2z"/>
+                </svg>
+                <span>Process Automation</span>
+            </div>
+            <div class="service-tag">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+                </svg>
+                <span>DevOps & Security</span>
             </div>
         </div>
+
     </div>
 </body>
 </html>
